@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_app/home/settings/theme_botton_sheet.dart';
 
 import '../../my_theme.dart';
 import '../../providers/app_config_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'languge_bottom_sheet.dart';
 
 class SettingTab extends StatefulWidget {
@@ -49,22 +47,18 @@ class _SettingsState extends State<SettingTab> {
                 children: [
                   Text(
                     provider.appLanguage == 'en'
-                        ? AppLocalizations.of(context)!.english ////الانجليزيه
-                        : AppLocalizations.of(context)!.arabic ////العربيه
-                    ,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .titleMedium,
-
-                  ),
+                          ? AppLocalizations.of(context)!.english ////الانجليزيه
+                          : AppLocalizations.of(context)!.arabic ////العربيه
+                      ,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: provider.isDarkMode()
+                              ? Mytheme.blackDark
+                              : Theme.of(context).shadowColor)),
                   Icon(Icons.arrow_drop_down,
                     color:
                     provider.isDarkMode()
-                        ? Mytheme.PrimaryLight
-                        : Theme
-                        .of(context)
-                        .shadowColor,)
+                        ? Mytheme.blackDark
+                        : Theme.of(context).shadowColor,)
                 ],
               ),
             ),
@@ -98,23 +92,20 @@ class _SettingsState extends State<SettingTab> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    provider.isDarkMode()
-                        ? AppLocalizations.of(context)!.dark //dark//
-                        : AppLocalizations.of(context)!.light //light//
+                      provider.isDarkMode()
+                          ? AppLocalizations.of(context)!.dark //dark//
+                          : AppLocalizations.of(context)!.light //light//
 
-                    ,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .titleMedium,
-                  ),
+                      ,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: provider.isDarkMode()
+                              ? Mytheme.blackDark
+                              : Theme.of(context).shadowColor)),
                   Icon(Icons.arrow_drop_down,
                     color:
                     provider.isDarkMode()
-                        ? Mytheme.PrimaryLight
-                        : Theme
-                        .of(context)
-                        .shadowColor,)
+                        ? Mytheme.blackDark
+                        : Theme.of(context).shadowColor,)
                 ],
               ),
             ),

@@ -43,7 +43,11 @@
 "watting" : "Watting...",
 "task_added_sucuessfully" : "Task Added Sucuessfully",
 "done" : "Done",
-"delete" : "Delete"
+"delete" : "Delete",
+"isdone" : "IsDone!",
+"save_changes" : "Save Changes",
+"edittask" : "Edit Task",
+"task_edited_sucuessfully" : "Task Edited Sucuessfully"
 
 
 
