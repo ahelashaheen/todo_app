@@ -6,6 +6,7 @@ import 'package:to_do_app/dialog_utils.dart';
 import 'package:to_do_app/firebase_utiles.dart';
 
 import '../../model/task.dart';
+import '../../my_theme.dart';
 import '../../providers/app_config_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/list_provider.dart';
@@ -28,15 +29,19 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
     var provider = Provider.of<AppConfigProvider>(context);
     listProvider = Provider.of<ListProvider>(context);
     return Container(
+      color: provider.isDarkMode()
+          ? Mytheme.blackDark
+          : Theme.of(context).cardColor,
       padding: EdgeInsets.all(15),
       child: Column(
         children: [
-          Text(AppLocalizations.of(context)!.add_new_task,
-            style: Theme
-                .of(context)
-                .textTheme
-                .titleMedium,),
-
+          Text(
+            AppLocalizations.of(context)!.add_new_task,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: provider.isDarkMode()
+                    ? Mytheme.whiteColor
+                    : Theme.of(context).primaryColorDark),
+          ),
           Form(
               key: formkey,
               child: Column(
@@ -56,9 +61,20 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          hintText: AppLocalizations.of(context)!
-                              .enter_your_task
-                      ),
+                          hintText:
+                              AppLocalizations.of(context)!.enter_your_task,
+                          hintStyle: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                  color: provider.isDarkMode()
+                                      ? Mytheme.whiteColor
+                                      : Theme.of(context).primaryColorDark)),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: provider.isDarkMode()
+                                ? Mytheme.whiteColor
+                                : Theme.of(context).primaryColorDark,
+                          ),
                     ),
                   ),
                   Padding(
@@ -75,8 +91,18 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          hintText: AppLocalizations.of(context)!.description
-                      ),
+                          hintText: AppLocalizations.of(context)!.description,
+                          hintStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: provider.isDarkMode()
+                                        ? Mytheme.whiteColor
+                                        : Theme.of(context).primaryColorDark,
+                                  )),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: provider.isDarkMode()
+                                ? Mytheme.whiteColor
+                                : Theme.of(context).primaryColorDark,
+                          ),
                       maxLines: 3,
                     ),
                   ),
@@ -145,12 +171,6 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
       FirebaseUtils.addTaskToFireStore(task, authProvider.currentUser?.id ?? '')
           .then((value) {
         DialogUtils.hideLoading(context);
-        DialogUtils.showMessage(
-            context, AppLocalizations.of(context)!.task_added_sucuessfully,
-            posActionName: AppLocalizations.of(context)!.ok,
-            posAction: () {
-              Navigator.pop(context);
-            });
       })
           .timeout(
           Duration(milliseconds: 500),

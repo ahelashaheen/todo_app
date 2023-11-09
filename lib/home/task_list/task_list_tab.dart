@@ -1,13 +1,10 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_app/firebase_utiles.dart';
 import 'package:to_do_app/home/task_list/task_wedgit.dart';
 import 'package:to_do_app/my_theme.dart';
 import 'package:to_do_app/providers/list_provider.dart';
 
-import '../../model/task.dart';
 import '../../providers/app_config_provider.dart';
 import '../../providers/auth_provider.dart';
 
@@ -39,16 +36,20 @@ class _TaskListTabState extends State<TaskListTab> {
           },
           leftMargin: 20,
           monthColor: provider.isDarkMode()
-              ? Theme
-              .of(context)
-              .canvasColor
+              ? Theme.of(context).primaryColor
               : Mytheme.blackColor,
-          dayColor: Mytheme.blackColor,
-          activeDayColor: Colors.white,
-          activeBackgroundDayColor: Theme
-              .of(context)
-              .primaryColor,
-          dotsColor: Mytheme.whiteColor,
+          dayColor: provider.isDarkMode()
+              ? Theme.of(context).cardColor
+              : Mytheme.blackColor,
+          activeDayColor: provider.isDarkMode()
+              ? Theme.of(context).primaryColor
+              : Mytheme.whiteColor,
+          activeBackgroundDayColor: provider.isDarkMode()
+              ? Theme.of(context).cardColor
+              : Mytheme.PrimaryLight,
+          dotsColor: provider.isDarkMode()
+              ? Theme.of(context).primaryColor
+              : Mytheme.whiteColor,
           selectableDayPredicate: (date) => true,
           locale: 'en_ISO',
         ),

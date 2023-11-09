@@ -42,8 +42,17 @@
 "add" : "اضافه",
 "watting" : "يرجى الانتظار",
 "task_added_sucuessfully" : "تمت الاضافه بنجاح",
-"done" : "نم",
-"delete" : "الغاء"
+"done" : "تم",
+"delete" : "الغاء",
+"isdone" : "تم",
+"save_changes" : "حفظ التغييرات",
+"edittask" : "تعديل",
+"task_edited_sucuessfully" : "تم التعديل بنجاح"
+
+
+
+
+
 
 
 }

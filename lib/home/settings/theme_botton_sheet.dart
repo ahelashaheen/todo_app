@@ -51,13 +51,11 @@ class LanguageThemeSheet extends StatelessWidget {
                 .of(context)
                 .textTheme
                 .titleMedium
-                ?.copyWith(color: provider.isDarkMode()
-                ? Mytheme.blackColor
-                : Theme
-                .of(context)
-                .shadowColor,
-
-            ),
+                ?.copyWith(
+                  color: provider.isDarkMode()
+                      ? Mytheme.blackColor
+                      : Theme.of(context).primaryColor,
+                ),
           ),
           Icon(
             Icons.check,
@@ -78,15 +76,12 @@ class LanguageThemeSheet extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(text, style: Theme
-              .of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(color: provider.isDarkMode()
-              ? Mytheme.blackColor
-              : Theme
-              .of(context)
-              .shadowColor),
+          Text(
+            text,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: provider.isDarkMode()
+                    ? Mytheme.blackColor
+                    : Theme.of(context).primaryColorDark),
             // Icon(Icons.check, color: Theme.of(context).primaryColor,size: 35,)
           )
         ],

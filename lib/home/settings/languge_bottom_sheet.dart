@@ -50,7 +50,7 @@ class LanguageButtonSheet extends StatelessWidget {
                 .textTheme
                 .titleMedium
                 ?.copyWith(color: provider.isDarkMode()
-                ? Mytheme.whiteColor
+                ? Mytheme.blackDark
                 : Theme
                 .of(context)
                 .primaryColorDark),
@@ -79,7 +79,7 @@ class LanguageButtonSheet extends StatelessWidget {
               .textTheme
               .titleMedium
               ?.copyWith(color: provider.isDarkMode()
-              ? Mytheme.whiteColor
+              ? Mytheme.blackDark
               : Theme
               .of(context)
               .primaryColor),),
