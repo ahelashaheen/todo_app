@@ -45,13 +45,14 @@ class _TaskWedgitItemState extends State<TaskWedgitItem> {
                     // ListProvider.getAllTasksFromFireStore(uId);
                   });
                 },
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(13),
-                    topLeft: Radius.circular(13)),
-                backgroundColor: Mytheme.redColor,
-                foregroundColor: Mytheme.whiteColor,
                 icon: Icons.delete,
                 label: AppLocalizations.of(context)!.delete,
+                backgroundColor: Colors.red,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                    topRight: Radius.circular(20)),
               ),
             ],
           ),
@@ -59,7 +60,7 @@ class _TaskWedgitItemState extends State<TaskWedgitItem> {
             margin: EdgeInsets.all(14),
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
                 color: Mytheme.whiteColor),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
